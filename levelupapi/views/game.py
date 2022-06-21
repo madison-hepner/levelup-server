@@ -10,8 +10,8 @@ class GameView(ViewSet):
     """Level up game view"""
 
     def retrieve(self, request, pk):
-        game = Game.objects.all()
-        serializer = GameSerializer(game, many=True)
+        games = Game.objects.get(pk=pk)
+        serializer = GameSerializer(games)
         return Response(serializer.data)
 
     def list(self, request):
